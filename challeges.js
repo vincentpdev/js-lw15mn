@@ -391,3 +391,113 @@ console.log(bestProfit([100, 1, 123, 120])); // 122
 console.log(bestProfit([100, 100, 100, 100])); // 0
 console.log(bestProfit([100, 88, 44, 2])); // 0
 console.logbestProfit([100, 88, 99, 300]); // 212
+
+//Create a function "fastCache" that takes one argument (a function) and returns a function. When fastCache is invoked it creates an object that tracks calls to the returned function, where each input to the returned function is associated with its output. Every subsequent call to that returned function with the same argument will return the output directly from the object, instead of invoking the original function (cb) again.
+
+
+
+// const multiplyBy2 = num => num * 2;
+// const cachedMultiplyBy2 = fastCache(multiplyBy2);
+// console.log(cachedMultiplyBy2(100)); // -> 200
+// console.log(cachedMultiplyBy2(150)); // -> 300
+// console.log(cachedMultiplyBy2(100)); // -> 200 // from the cache object
+
+// function fastCache(cb) {
+//   let obj = {};
+//   return function(num) {
+//     if (obj[num]) return obj[num];
+//     else  obj[num] = cb(num);
+//       return cb(num);
+//   };
+// }
+
+
+/*Write a function that takes a two-digit number and determines if it's the largest of two possible digit swaps.
+To illustrate:
+largestSwap(27) ➞ false
+largestSwap(43) ➞ true
+
+If 27 is our input, we should return false because swapping the digits gives us 72, and 72 > 27. On the other hand, swapping 43 gives us 34, and 43 > 34.*/
+
+//input: number
+//output: boolean
+// swap input's integer place
+// if input < integer place swapper return boolean 
+
+// const largestSwap = (num) => {
+//   let first = num % 10
+//   let second = num % 100 - first
+//   let firstDigit= second/10
+//   let secondDigit = first*10
+//   let newNum =firstDigit + secondDigit
+//   if (newNum > num){
+//     return false
+//   }else{
+//     return true
+//   }
+// }
+
+// function largestSwap(num) {
+// 	let swap = num.toString().split("").reverse().join("")
+// 	if (num >= swap) {
+// 		return true;
+// 	}
+// 	else {
+// 		return false;
+// 	}
+// }
+
+// function largestSwap(num) {
+//   if(Math.floor(num/10)>= num%10) return true;
+//   // first (10's) digit = Math.floor(num/10)
+//   // second (1's) digit = num%10
+//   return false;
+// }
+//Examples
+// console.log(largestSwap(14)); //➞ false
+// console.log(largestSwap(53)); //➞ true
+// console.log(largestSwap(99)); //➞ true
+
+
+
+
+// Create a function to return the amount of potatoes there are in a string.
+
+// function spudFinder(str){
+//   let potatoArr = str.split('')
+//   let counter = 0
+//   for (let i =0; i<potatoArr.length; i++) {
+//     if (potatoArr[i]=== "p" && potatoArr[i+1]=== "o" && potatoArr[i+2]=== "t" && potatoArr[i+3]=== "a" && potatoArr[i+4]=== "t" && potatoArr[i+5]=== "o") {
+//       counter += 1;
+//     }
+//   }
+//   return counter
+// }
+
+// function potatoes(string) {
+//    //const newStr = string.split("potato").length - 1;
+//    const newStr = string.split("potato").length - 1;
+//   //  console.log(newStr);
+// }
+
+// function potatoes(string, count = 0){
+//   if(string.length === 0){return count}
+//   let potato = "potato";
+//   let innerCounter = 0
+//   for(let i = 0; i <=potato.length-1; i++){
+//     if(potato[i]===string[i]){innerCounter += 1}
+// 	}
+//   if(innerCounter === potato.length)(count+=1)
+//  	return potatoes(string.slice(1), count)
+// }
+
+//
+//function potatoes(str){
+//return str.match(/potato/g).length;
+//};
+//
+//
+//
+//console.log(potatoes("potato")); // ➞ 1
+//console.log(potatoes("potatopotato")); // ➞ 2
+//console.log(potatoes("potatoapple")); // ➞ 1
